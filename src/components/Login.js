@@ -5,12 +5,10 @@ import GlobalContext from "../util/GlobalContext";
 export default function Login() {
   const context = useContext(GlobalContext);
   const data = context.arrUsers;
-
   console.log(data);
 
   const [formData, setFormData] = useState({ username: "", password: "" });
   const navigate = useNavigate();
-
   function handleFormOnChange(e) {
     var name = e.target.name;
     var value = e.target.value;
@@ -24,19 +22,39 @@ export default function Login() {
 
   function onValidation(e) {
     e.preventDefault();
-    data.forEach((item) => {
+
+    const user = data.map((item) => item);
+    console.log(user);
+
+    let users = user.filter((item) => {
       if (
-        formData.username !== item.username ||
-        formData.password !== item.pass ||
-        formData.username === "" ||
-        formData.password === ""
+        item.username === formData.username &&
+        item.pass === formData.password
       ) {
-        alert("incorrect username or password");
-        navigate("./register", { replace: true });
-      } else {
-        alert("correct");
+        return item;
       }
     });
+
+    console.log(users);
+
+    if (users === undefined || users.length == 0) {
+      alert("Incorrect Username or Password");
+      navigate("./register", { replace: true });
+    } else {
+      users.forEach((item) => {
+        if (
+          item.username === formData.username &&
+          item.pass === formData.password
+        ) {
+          navigate("./profile", { replace: true });
+        }
+      });
+    }
+
+    if (formData.username === "" || formData.password === "") {
+      alert("Empty Username or Password");
+      navigate("./register", { replace: true });
+    }
   }
 
   return (

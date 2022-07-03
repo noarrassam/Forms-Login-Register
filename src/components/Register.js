@@ -4,6 +4,7 @@ import GlobalContext from "../util/GlobalContext";
 export default function Register() {
   const context = useContext(GlobalContext);
   const defaultFormData = {
+    // id: 1,
     fname: "",
     lname: "",
     username: "",
