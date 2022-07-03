@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import GlobalContext from "../util/GlobalContext";
 
-export default function Info(props) {
+export default function Info() {
   const context = useContext(GlobalContext);
   const data = context.arrUsers;
+  console.log(data);
   return (
     <>
       <div className="table-responsive-md">

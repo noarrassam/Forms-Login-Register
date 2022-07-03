@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import GlobalContext from "../util/GlobalContext";
 
-export default function Register(props) {
+export default function Register() {
   const context = useContext(GlobalContext);
   const defaultFormData = {
     fname: "",
@@ -13,9 +13,8 @@ export default function Register(props) {
     pass: "",
     repass: "",
   };
-  const [formData, setFormData] = useState(defaultFormData);
 
-  //const [state, setState] = useState([]);
+  const [formData, setFormData] = useState(defaultFormData);
 
   function handleOnChange(e) {
     var name = e.target.name;

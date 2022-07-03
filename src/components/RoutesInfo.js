@@ -31,7 +31,7 @@ export default function RoutesInfo() {
           path="/"
           element={
             <Suspense fallback={<Loading />}>
-              <LoginLazy username="aaaa" password="aaaa" />
+              <LoginLazy />
             </Suspense>
           }
         />

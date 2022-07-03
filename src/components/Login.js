@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import GlobalContext from "../util/GlobalContext";
 
-export default function Login(props) {
+export default function Login() {
+  const context = useContext(GlobalContext);
+  const data = context.arrUsers;
+
+  console.log(data);
+
   const [formData, setFormData] = useState({ username: "", password: "" });
   const navigate = useNavigate();
+
   function handleFormOnChange(e) {
+    var name = e.target.name;
+    var value = e.target.value;
     setFormData((prevState) => {
-      var name = e.target.name;
-      var value = e.target.value;
       return {
         ...prevState,
         [name]: value,
@@ -17,17 +24,19 @@ export default function Login(props) {
 
   function onValidation(e) {
     e.preventDefault();
-
-    if (
-      (formData.username !== props.username &&
-        formData.password !== props.password) ||
-      (formData.username === "" && formData.password === "")
-    ) {
-      alert("incorrect username or password");
-      navigate("./register", { replace: true });
-    } else {
-      alert("correct");
-    }
+    data.forEach((item) => {
+      if (
+        formData.username !== item.username ||
+        formData.password !== item.pass ||
+        formData.username === "" ||
+        formData.password === ""
+      ) {
+        alert("incorrect username or password");
+        navigate("./register", { replace: true });
+      } else {
+        alert("correct");
+      }
+    });
   }
 
   return (
