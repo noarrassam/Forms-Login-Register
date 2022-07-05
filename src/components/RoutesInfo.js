@@ -13,11 +13,11 @@ export default function RoutesInfo() {
 
   const ProfileLazy = lazy(() => import("./Profile"));
 
-  //const InfoLazy = lazy(() => import("./Info"));
+  // const InfoLazy = lazy(() => import("./Info"));
 
   const InfoLazy = Info;
 
-  //const shareData = new ShareData();
+  // const shareData = new ShareData();
 
   const Loading = () => {
     return <div>Loading Module...</div>;
