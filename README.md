@@ -38,9 +38,6 @@ It is a React JS application that allows a user to register, login, edit, and vi
 ## **Edit Page**
 
 ![![Directory]()](https://github.com/noarrassam/Forms-Login-Register/blob/main/images/5.png)
-
-## **Edit Page**
-
 ![![Directory]()](https://github.com/noarrassam/Forms-Login-Register/blob/main/images/6.png)
 
 ## **Info Page**
