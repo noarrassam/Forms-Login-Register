@@ -4,11 +4,11 @@ import GlobalContext from "../util/GlobalContext";
 export default function Register() {
   const context = useContext(GlobalContext);
   const defaultFormData = {
-    // id: 1,
     fname: "",
     lname: "",
     username: "",
     gender: "",
+    role: "",
     address: "",
     email: "",
     pass: "",
@@ -102,6 +102,16 @@ export default function Register() {
               value={formData.email}
             />{" "}
             <br />
+            Role:
+            <input
+              type="text"
+              required
+              id="role"
+              name="role"
+              onChange={handleOnChange}
+              value={formData.role}
+            />{" "}
+            <br />
             Password:
             <input
               type="Password"
@@ -121,7 +131,6 @@ export default function Register() {
               onChange={handleOnChange}
               value={formData.repass}
             />{" "}
-            <br />
             <textarea
               cols="80"
               rows="5"

@@ -1,18 +1,17 @@
 import React, { lazy, useState, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 import GlobalContext from "../util/GlobalContext";
-import ShareData from "../util/ShareData";
 import Info from "./Info";
 
 export default function RoutesInfo() {
-  //const elements = state.map((things) => <li key={uuidv4()}>{things}</li>);
-
-  const [state, setState] = useState({ arrUsers: [] });
+  const [state, setState] = useState({ arrUsers: [], arrLoginUsers: [] });
+  // const [loginUsers, setLoginUsers] = useState({ arrLoginUsers: [] });
 
   const LoginLazy = lazy(() => import("./Login"));
 
   const RegisterLazy = lazy(() => import("./Register"));
+
+  const ProfileLazy = lazy(() => import("./Profile"));
 
   //const InfoLazy = lazy(() => import("./Info"));
 
@@ -48,6 +47,14 @@ export default function RoutesInfo() {
           element={
             <Suspense fallback={<Loading />}>
               <InfoLazy />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Suspense fallback={<Loading />}>
+              <ProfileLazy />
             </Suspense>
           }
         />

@@ -5,7 +5,11 @@ import GlobalContext from "../util/GlobalContext";
 export default function Login() {
   const context = useContext(GlobalContext);
   const data = context.arrUsers;
+  //const usersLogin = context.arrLoginUsers;
+
+  //console.log(usersLogin);
   console.log(data);
+  // console.log(context.users);
 
   const [formData, setFormData] = useState({ username: "", password: "" });
   const navigate = useNavigate();
@@ -23,10 +27,12 @@ export default function Login() {
   function onValidation(e) {
     e.preventDefault();
 
-    const user = data.map((item) => item);
+    // const user = [...data];
+
+    /*const user = data.map((item) => item);
     console.log(user);
 
-    let users = user.filter((item) => {
+    let users = data.filter((item) => {
       if (
         item.username === formData.username &&
         item.pass === formData.password
@@ -35,25 +41,40 @@ export default function Login() {
       }
     });
 
-    console.log(users);
-
-    if (users === undefined || users.length == 0) {
+    if (users === undefined || users.length === 0) {
       alert("Incorrect Username or Password");
       navigate("./register", { replace: true });
     } else {
-      users.forEach((item) => {
+      users.forEach((item, i) => {
         if (
           item.username === formData.username &&
           item.pass === formData.password
         ) {
+          context.loginUserIndex = i;
+          console.log(context.loginUserIndex);
+          //usersLogin.splice(i, 0, item.email);
+          //console.log(usersLogin, i);
           navigate("./profile", { replace: true });
         }
       });
-    }
-
+    }*/
     if (formData.username === "" || formData.password === "") {
       alert("Empty Username or Password");
-      navigate("./register", { replace: true });
+    } else {
+      context.loginUserIndex = -1;
+      data.forEach((item, i) => {
+        if (
+          item.username === formData.username &&
+          item.pass === formData.password
+        ) {
+          context.loginUserIndex = i;
+          console.log(context.loginUserIndex);
+          navigate("./profile", { replace: true });
+        }
+      });
+      if (context.loginUserIndex === -1) {
+        alert("Username or password is incorrect");
+      }
     }
   }
 
