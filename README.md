@@ -16,7 +16,11 @@ It is a React JS application that allows a user to register, login, edit, and vi
 
 - React JS
 
-- Components
+- Controlled Components
+
+- Routes
+
+- Forms
 
 - React Hooks: useState, useContext
 
