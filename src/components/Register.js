@@ -101,17 +101,6 @@ export default function Register() {
               onChange={handleOnChange}
               value={formData.email}
             />{" "}
-            <br />
-            Role:
-            <input
-              type="text"
-              required
-              id="role"
-              name="role"
-              onChange={handleOnChange}
-              value={formData.role}
-            />{" "}
-            <br />
             Password:
             <input
               type="Password"
